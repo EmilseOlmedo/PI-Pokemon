@@ -7,12 +7,13 @@ module.exports = (sequelize) => {
     "Type",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID, //identificador universal UUIDV4 (VER)
         allowNull: false,
-        unique: true,
-        autoIncrement: true,
+        // unique: true,
+        // autoIncrement: true,
         primaryKey: true,
-        index: true,
+        defaultValue: UUIDV4,
+        // index: true,
       },
       name: {
         type: DataTypes.STRING,

@@ -6,12 +6,13 @@ module.exports = (sequelize) => {
   sequelize.define(
     'Pokemon', {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
-        unique: true,
-        autoIncrement: true,
-          primaryKey: true,
-          index: true,
+        // unique: true,
+        // autoIncrement: true,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+        // index: true,
       },
       name: {
         type: DataTypes.STRING,
@@ -37,8 +38,8 @@ module.exports = (sequelize) => {
       attack: {
         type: DataTypes.INTEGER,
         validate: {
-    min: 1,
-    max: 350,
+          min: 1,
+          max: 350,
         },
       },
       defense: {
@@ -51,8 +52,8 @@ module.exports = (sequelize) => {
       speed: {
         type: DataTypes.INTEGER,
         validate: {
-    min: 1,
-    max: 100,
+          min: 1,
+          max: 100,
         },
       },
       height: {
@@ -69,11 +70,11 @@ module.exports = (sequelize) => {
           max: 1000, //El pokemon más pesado es Cosmoem con 999kg.
         },
       },
-      // createdPokemon: {
-      //   type: DataTypes.BOOLEAN,
-      //   defaultValue: true,
-      //   allowNull: false,
-      // },
+      createdPokemon: {     //mi flag para saber que lo estoy creando yo y no que viene de la APi
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
+      },
     },
     { timestamps: false }
   );
